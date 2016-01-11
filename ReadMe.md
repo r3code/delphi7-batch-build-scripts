@@ -15,8 +15,7 @@ or `c:\Program Files(x86)\Borland\Delphi7\Bin\`
 2. Install [madExcept](http://madshi.net/madCollection.exe) exception handler. 
 It's requred to patch the compiled exe after build to allow madExcept debug 
 the application during execution.
-
-You can remove the patching by deleting `:madExceptPatchBinary` block 
+*Note:* You can remove madExcept patching by deleting `:madExceptPatchBinary` block 
 and madExcept paths from `INCLUDE_DIRS` in `BuildMyApp.bat` .
 
 ##Usage
