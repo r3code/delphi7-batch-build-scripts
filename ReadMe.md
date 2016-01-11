@@ -23,7 +23,7 @@ and madExcept paths from `INCLUDE_DIRS` in `BuildMyApp.bat` .
 * To build one project run relevant batch file, e.g. `BuildMyApp.bat`, 
 `TestMyApp.bat`.
 * To add new build target:
-1. Create a copy of `BuildMyApp.bat`. 
-2. Rename it as you need.
-3. Add created batch filename to the buildTargets variable in BuildAll.bat   
-4. Try build.
+  1. Create a copy of `BuildMyApp.bat`. 
+  2. Rename it as you need.
+  3. Add created batch filename to the buildTargets variable in BuildAll.bat   
+  4. Try build.
