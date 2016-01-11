@@ -1,0 +1,9 @@
+/build/bin
+/build/dcu
+*.dpp
+*.dcu
+*.ddp
+*.drc
+*.map
+/projects/*.res
+/resources/versioninfo/*.RES

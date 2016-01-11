@@ -1,0 +1,34 @@
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEFLAGSMASK  	VS_FFI_FILEFLAGSMASK
+#ifdef DEBUG
+FILEFLAGS      	VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+FILESUBTYPE VFT2_UNKNOWN
+{
+	BLOCK "StringFileInfo"
+	{
+	   BLOCK "041904E4"  // set according to your language, here 0419 is for Russian
+	   {
+		  VALUE "CompanyName", "Company\000"
+		  VALUE "FileDescription", "MyApp\000"
+		  VALUE "FileVersion", "1.0.0.0\000"
+		  VALUE "InternalName", "MyApp\000"
+		  VALUE "LegalCopyright", "Company or Author, 2015\000"
+		  VALUE "LegalTrademarks", "TrademarkTM\000"
+		  VALUE "OriginalFilename", "MyApp.exe\000"
+		  VALUE "ProductName", "MyApp\000"
+		  VALUE "ProductVersion", "1.0\000"
+		  VALUE "Comments", "\000"
+	   }
+	}
+	BLOCK "VarFileInfo"
+	{
+	   VALUE "Translation", 0x0419 0x04E4
+	}
+}
