@@ -56,7 +56,7 @@ goto :end
   
   echo:
   echo Compilling Resource...   
-  "%BRCC32%" -c1251 -l1049 -i"%IncludeDirs%" -fo"%CompiledResPath%" "%ResourcePath%"   
+  "%BRCC32%" -c1251 -l1049 -i "%IncludeDirs%" -fo "%CompiledResPath%" "%ResourcePath%"   
   IF errorlevel 1 (  
     set errorCode=1        
     goto error
