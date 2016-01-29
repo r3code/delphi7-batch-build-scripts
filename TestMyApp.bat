@@ -15,6 +15,7 @@ set ProjectName=TestMyApp
 
 
 :SetPathToProjectFiles
+set ProjectResources=%SCRIPT_DIR%\Resources
 set Sources=%SCRIPT_DIR%\Source
 set SourceIncludings=%Sources%;^
 %Sources%\logger
@@ -66,12 +67,12 @@ set INCLUDE_DIRS=%D7Lib%;%DUnit%;%MadExcept%;%MadBasic%;%MadDisasm%;^
 %SuperObject%;%RegExpr%;%SRC_DIRS%
 set BIN_DIR=%SCRIPT_DIR%\Build\bin
 set DCU_DIR=%SCRIPT_DIR%\Build\dcu
-set Resources=%SCRIPT_DIR%\Resources
+set RESOURCE_DIRS=%ProjectResources%;%INCLUDE_DIRS%
 
 rem USAGE: 
-rem   Compile.bat PROJECT_FILE DEFINED_CONDITIONALS COMP_DIRECTIVE SRC_DIRS INCLUDE_DIRS Resources BIN_DIR DCU_DIR
+rem   Compile.bat PROJECT_FILE DEFINED_CONDITIONALS COMP_DIRECTIVE SRC_DIRS INCLUDE_DIRS RESOURCE_DIRS BIN_DIR DCU_DIR
 setlocal
-call "%SCRIPT_DIR%\Compile.bat" "%PROJECT_FILE%" "%DEFINED_CONDITIONALS%" "%COMP_DIRECTIVE%" "%SRC_DIRS%" "%INCLUDE_DIRS%" "%Resources%" "%BIN_DIR%" "%DCU_DIR%"
+call "%SCRIPT_DIR%\Compile.bat" "%PROJECT_FILE%" "%DEFINED_CONDITIONALS%" "%COMP_DIRECTIVE%" "%SRC_DIRS%" "%INCLUDE_DIRS%" "%RESOURCE_DIRS%" "%BIN_DIR%" "%DCU_DIR%"
 endlocal
 if errorlevel 1  ( 
   set ERRSTR=Compilation failed
