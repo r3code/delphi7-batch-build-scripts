@@ -73,7 +73,7 @@ rem Add required lib's vars below
 set INCLUDE_DIRS=%D7Lib%;%MadExcept%;%MadBasic%;%MadDisasm%;%SRC_DIRS%
 set BIN_DIR=%SCRIPT_DIR%\Build\bin
 set DCU_DIR=%SCRIPT_DIR%\Build\dcu
-set RESOURCE_DIRS=%ProjectResources%;%INCLUDE_DIRS%
+set RESOURCE_DIRS=%INCLUDE_DIRS%;%ProjectResources%
 
 rem USAGE: 
 rem   Compile.bat PROJECT_FILE DEFINED_CONDITIONALS COMP_DIRECTIVE SRC_DIRS INCLUDE_DIRS RESOURCE_DIRS BIN_DIR DCU_DIR
