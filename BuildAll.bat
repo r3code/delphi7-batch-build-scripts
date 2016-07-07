@@ -1,5 +1,7 @@
 REM CommandInterpreter: $(COMSPEC)
 @echo off
+set StartTime=%time%
+title
 setlocal EnableDelayedExpansion
 set LF=^
 
@@ -15,34 +17,51 @@ SET /a BuildTargetCount=0
 SET /a FailedBuildCount=0
 SET BuildResults=
 
-set buildTargets=BuildMyApp.bat TestMyApp.bat
+set buildTargets=%SCRIPT_DIR%\BuildTargets.txt
 
 :CountBuildTargets
-for %%a in (%buildTargets%) do (
+echo %me%: Targets to build:
+for /F "usebackq delims=" %%i IN ("%buildTargets%") DO (
    SET /a BuildTargetCount = !BuildTargetCount! + 1
+   echo %me%: - %%i
 )
+echo %me%: Target count=%BuildTargetCount%
+echo.
 
 :BuildTargets
-(for %%a in (%buildTargets%) do (
-   setlocal   
-   call "%SCRIPT_DIR%\%%a"
-   endlocal  
-   if errorlevel 1 (
-      call :addBuildResult %%a 1
+SET /a TargetNo=0
+for /F "usebackq delims=" %%i IN ("%buildTargets%") DO (   
+   set /a TargetNo=!TargetNo!+1        
+   echo %me%: == Start build[!TargetNo!/%BuildTargetCount%]: %%i ==   
+   if !FailedBuildCount! neq 0 (
+      Title Build Target !TargetNo!/%BuildTargetCount%, failed !FailedBuildCount! - %%i   
    ) else (
-      call :addBuildResult %%a 0   
+      Title Build Target !TargetNo!/%BuildTargetCount% - %%i 
    )
-))
+   setlocal           
+   call "%SCRIPT_DIR%\%%i"   
+   endlocal         
+   if errorlevel 1 (
+      call :addBuildResult %%i 1
+   ) else (
+      call :addBuildResult %%i 0   
+   )
+   echo %me%: == Finished build[!TargetNo!/%BuildTargetCount%]: %%i ==
+)
 
 :end
 echo:
 if !FailedBuildCount! neq 0 (
+  title %me% - FAILED
   echo %me%: FAILED. !FailedBuildCount! of !BuildTargetCount! failed.
-  ECHO !BuildResults!
+  ECHO !BuildResults! 
+  call :printTimings
   exit /b 1
 )
-ECHO %me%: OK. Successfully built !BuildTargetCount! target(s).
-ECHO !BuildResults!  
+title %me% - OK
+ECHO %me%: OK. Built !BuildTargetCount! target(s).
+ECHO !BuildResults! 
+call :printTimings 
 exit /b 0
 
 
@@ -57,3 +76,12 @@ if %2 neq 0 (
   SET "BuildResults=!BuildResults! !LF!* %1: OK"
 )
 goto :eof
+
+
+
+:printTimings
+   ECHO.
+   ECHO %me%: -- Time report --
+   ECHO %me%: Started  %StartTime%
+   ECHO %me%: Finished %time%
+goto:EOF
