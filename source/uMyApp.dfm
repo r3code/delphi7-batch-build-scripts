@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 565
   Top = 367
   Width = 251
-  Height = 195
+  Height = 228
   Caption = 'DIV A by B'
   Color = clBtnFace
   Font.Charset = RUSSIAN_CHARSET
@@ -42,6 +42,13 @@ object frmMain: TfrmMain
     Width = 20
     Height = 16
     Caption = 'Log'
+  end
+  object lblBuildDate: TLabel
+    Left = 16
+    Top = 160
+    Width = 91
+    Height = 16
+    Caption = 'r3code (c) 2016'
   end
   object edtA: TEdit
     Left = 16

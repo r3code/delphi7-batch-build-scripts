@@ -60,6 +60,11 @@ if errorlevel 1 (
   goto error
 )
 
+:setBuildDateForApp
+echo Set Build Date...
+rem MyAppBuildDate.inc included in project
+call "%SCRIPT_DIR%\SetBuildDate.bat" "%SCRIPT_DIR%\source\MyAppBuildDate.inc"
+
 :compileProject
 rem Compile params
 

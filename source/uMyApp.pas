@@ -26,6 +26,7 @@ type
     lblTotal: TLabel;
     mmoLog: TMemo;
     lblLog: TLabel;
+    lblBuildDate: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnSumClick(Sender: TObject);
@@ -43,11 +44,14 @@ uses
 
 {$R *.dfm}
 
+{$INCLUDE 'MyAppBuildDate.inc'}
+
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
   mmoLog.Lines.Clear;
   FLogger := TLogger.Create(mmoLog.Lines);
   FLogger.LogMsg('App started');
+  lblBuildDate.Caption := Format('%s-%d', [lblBuildDate.Caption, BUILD_YEAR]);
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);

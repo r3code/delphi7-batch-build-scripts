@@ -7,3 +7,4 @@
 *.map
 /projects/*.res
 /resources/versioninfo/*.RES
+/source/MyAppBuildDate.inc
