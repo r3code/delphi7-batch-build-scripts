@@ -48,10 +48,21 @@ if errorlevel 1 (
   goto error
 )
 
+set PROJECT_FILE=%SCRIPT_DIR%\Projects\%ProjectName%.dpr
+
+
+echo CheckMyAppDprRequiredIfDefs...
+setlocal
+call "%SCRIPT_DIR%\CheckMyAppDprRequiredIfDefs.bat" "%PROJECT_FILE%"
+endlocal
+if errorlevel 1 ( 
+  set ERRSTR=CheckMyAppDprRequiredIfDefs failed
+  goto error
+)
 
 :compileProject
 rem Compile params
-set PROJECT_FILE=%SCRIPT_DIR%\Projects\%ProjectName%.dpr
+
 set DEFINED_CONDITIONALS=Release;madExcept
 
 : A8 Aligned record fields ON  
